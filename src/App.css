@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+body{
+  margin: 0 auto; padding: 0;
+}
+
+.App{
+  display: flex; background: #ddd;
+  width: 100%; height: 100vh;
+  font-family: "Montserrat", 'Helvetica Neue, Helvetica, Arial'; 
+}
+
+a{
+  text-decoration:none;
+  color: inherit;
+}
