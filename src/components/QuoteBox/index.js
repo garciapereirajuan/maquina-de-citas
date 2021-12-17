@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import getColors from './../../utils/getColors';
 import getQuotes from './../../utils/getQuotes';
@@ -7,7 +7,6 @@ import ShowQuote from './../ShowQuote';
 import Controls from './../Controls';
 import PropTypes from 'prop-types';
 import "./QuoteBox.css";
-
 
 const QuoteBox = ({ 
     updateBgColor, 
@@ -24,16 +23,17 @@ const QuoteBox = ({
     const displayOption = display ? "block" : "none";
     const styleContainer = {display: displayOption, background: bgColor, color: textColor};
     
-    const renderNewQuote = () => {
+    const renderNewQuote = useCallback(
+      () => {
       setTimeout(() => setDisplay(true), 100);
       setDisplay(false);
       getQuotes(updateQuote, updateQuoteEn, updateAuthor, updateAuthorEn);
       getColors(updateBgColor, updateTextColor);
-    };
+    },[updateQuote, updateQuoteEn, updateAuthor, updateAuthorEn, updateBgColor, updateTextColor]);
     
     useEffect(()=>{
       renderNewQuote();
-    },[]);
+    },[renderNewQuote]);
     
     return(
       <Grid container id="quote-box" xs={11} sm={8} md={6} style={styleContainer}>  

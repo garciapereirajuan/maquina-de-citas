@@ -6,7 +6,7 @@ import "./ShowQuote.css";
 
 const ShowQuote = ({ quote, quoteEn, author, authorEn, langEnglish }) => (
     <React.Fragment>
-      <Grid item container xs={12} justifyContent="center" alignItems="center" >
+      <Grid item container xs={12} justifyContent="" alignItems="center" >
         {
           langEnglish 
             ? <Typography variant="h4" id="text">"{quoteEn}"</Typography>
@@ -16,10 +16,9 @@ const ShowQuote = ({ quote, quoteEn, author, authorEn, langEnglish }) => (
       <Grid item container xs={12} justifyContent="flex-end">
         {
             langEnglish
-            ? <Typography variant="h5" id="author">{authorEn}</Typography>
-            : <Typography variant="h5" id="author">{author}</Typography>
+            ? <Typography variant="h5" id="author">{authorEn?authorEn:author}</Typography>
+            : <Typography variant="h5" id="author">{author?author:authorEn}</Typography>
         }
-        {console.log("authorEn", authorEn)}
       </Grid>
     </React.Fragment>
   );

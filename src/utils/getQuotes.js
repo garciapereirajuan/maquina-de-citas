@@ -1,6 +1,5 @@
 import { urlQuote, urlQuoteEn, getRandomPosition } from './../utils/utils';
 import axios from 'axios';
-import PropTypes from 'prop-types'; 
 
 const getQuotesEspanol = async( urlQuote, randomPosition ) => {
     try{
@@ -31,22 +30,15 @@ const getQuotes = async(updateQuote, updateQuoteEn, updateAuthor, updateAuthorEn
 
     getQuotesEspanol(urlQuote, randomPosition)
         .then(({quote, author}) => {
-        quote && updateQuote(quote);
-        author && updateAuthor(author);
+        updateQuote(quote);
+        updateAuthor(author);
     });
 
     getQuotesEnglish(urlQuoteEn, randomPosition)
         .then(({quoteEn, authorEn})=>{
-        quoteEn && updateQuoteEn(quoteEn);
-        authorEn && updateAuthorEn(authorEn);
+        updateQuoteEn(quoteEn);
+        updateAuthorEn(authorEn);
     });
 } 
-
-getQuotes.propTypes = {
-    updateQuote: PropTypes.func.isRequired, 
-    updateQuoteEn: PropTypes.func.isRequired,
-    updateAuthor: PropTypes.func.isRequired,
-    updateAuthorEn: PropTypes.func.isRequired,
-}
 
 export default getQuotes;
